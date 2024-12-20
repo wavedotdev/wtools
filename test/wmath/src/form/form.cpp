@@ -6,5 +6,5 @@
 
 void doSomething()
 {
-    std::cout << "Do something!" << std::endl;
+    std::cout << "Do something! Do something again!" << std::endl;
 }

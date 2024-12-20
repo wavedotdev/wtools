@@ -1,51 +1,31 @@
-import sys # TODO make utils functions instead
-import make
+from make import *
+import sys
 import utils
 
-# TODO move
-CONFIG = "wconfig.json"
-EXTERN = "wextern.json"
+# TODO consider the args in the command
+def run_assembly(assembly: Assembly, args = []) -> None:
+    utils.run_command(assembly.target_path)
 
 ## Build src and main then run main with 'args'.
-def run_main(config: dict, extern: dict, args = []) -> None:
-    make.make_main(config, extern)
+def run_main(project: Project, args = []) -> None:
+    make_main(project)
+    run_assembly(project.main, args)
 
-    bin_dir_path = config["directories"]["bin"]
-
-    target_name = config["targets"]["main"]
-    target_path = utils.add_paths(bin_dir_path, target_name)
-
-    utils.run_command(target_path)
-
-## Build src and test then run test with 'filter'.
-def run_test(config: dict, extern: dict, args = []) -> None:
-    make.make_test(config, extern)
-
-    bin_dir_path = config["directories"]["bin"]
-
-    target_name = "test.exe"
-    target_path = utils.add_paths(bin_dir_path, target_name)
-
-    utils.run_command(target_path)
+## Build src and test then run test with 'args'.
+def run_test(project: Project, args = []) -> None:
+    make_test(project)
+    run_assembly(project.test, args)
 
 ## This is the behavior of wrun.
 if __name__ == "__main__":
     target = sys.argv[1]
     args = sys.argv[2:]
 
-    # TODO put this in a library
-    if not utils.path_exists(CONFIG):
-        raise Exception("No config file found.")
-    config = utils.read_json_dict(CONFIG)
-
-    # TODO put this in a library
-    extern = {"include-paths": []}
-    if utils.path_exists(EXTERN):
-        extern = utils.read_json_dict(EXTERN)
+    project = Project()
 
     if target == "main":
-        run_main(config, extern, args)
+        run_main(project)
     elif target == "test":
-        run_test(config, extern, args)
+        run_test(project)
     else:
         raise Exception("Invalid run target " + target)

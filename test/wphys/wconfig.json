@@ -1,26 +1,29 @@
 {
-    "c++": 20,
+    "settings": {
+        "c++": 20,
+        "static": {
+            "src": false,
+            "main": false,
+            "test": false
+        }
+    },
     "directories": {
         "include": "include",
         "src": "src",
         "main": "main",
         "test": "test",
-        "build-src": "build/src",
-        "build-main": "build/main",
-        "build-test": "build/test",
+        "build": "build",
         "bin": "bin"
     },
     "targets": {
-        "src": "testWphys.dll",
-        "main": "testWphys.exe"
+        "src": "testWphys",
+        "main": "testWphys",
+        "test": "test"
     },
     "dependencies": {
-        "src": [
-            "testWmath"
-        ],
-        "main": [
-        ],
-        "test": [
-        ]
+        "all": ["testWmath"],
+        "src": [],
+        "main": [],
+        "test": []
     }
 }

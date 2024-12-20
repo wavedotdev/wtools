@@ -1,8 +1,18 @@
 {
-    "include-paths": [
-        "../wmath/include"
-    ],
-    "lib-paths": [
-        "../wmath/bin"
-    ]
+    "includes": {
+        "all": [
+            "../wmath/include"
+        ],
+        "src": [],
+        "main": [],
+        "test": []
+    },
+    "libraries": {
+        "all": [
+            "../wmath/bin"
+        ],
+        "src": [],
+        "main": [],
+        "test": []
+    }
 }

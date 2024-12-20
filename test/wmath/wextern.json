@@ -1,4 +1,14 @@
 {
-    "include-paths": [
-    ]
+    "includes": {
+        "all": [],
+        "src": [],
+        "main": [],
+        "test": []
+    },
+    "libraries": {
+        "all": [],
+        "src": [],
+        "main": [],
+        "test": []
+    }
 }

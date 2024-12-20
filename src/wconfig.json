@@ -15,14 +15,15 @@
         "build": "build",
         "bin": "bin"
     },
+    "targets": {
+        "src": "myTarget",
+        "main": "myTarget",
+        "test": "test"
+    },
     "dependencies": {
+        "all": [],
         "src": [],
         "main": [],
         "test": []
-    },
-    "targets": {
-        "src": "myTarget.dll",
-        "main": "myTarget.exe",
-        "test": "test.exe"
     }
 }

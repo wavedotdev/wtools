@@ -1,25 +1,29 @@
 {
-    "c++": 20,
+    "settings": {
+        "c++": 20,
+        "static": {
+            "src": false,
+            "main": false,
+            "test": false
+        }
+    },
     "directories": {
         "include": "include",
         "src": "src",
         "main": "main",
         "test": "test",
-        "build-src": "build/src",
-        "build-main": "build/main",
-        "build-test": "build/test",
+        "build": "build",
         "bin": "bin"
     },
     "targets": {
-        "src": "testWmath.dll",
-        "main": "testWmath.exe"
+        "src": "testWmath",
+        "main": "testWmath",
+        "test": "test"
     },
     "dependencies": {
-        "src": [
-        ],
-        "main": [
-        ],
-        "test": [
-        ]
+        "all": [],
+        "src": [],
+        "main": [],
+        "test": []
     }
 }
