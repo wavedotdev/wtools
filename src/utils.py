@@ -51,9 +51,22 @@ def subtract_paths_list(full_paths: list, root_path: str) -> list:
 
     return new_paths
 
-## Delete file or directory at 'path' if it exists.
+## Delete file or directory at 'path' if it exists and all of its contents.
 def delete_path(path: str) -> None:
-    if path_exists(path):
+    if not path_exists(path):
+        return
+
+    if os.path.isdir(path):
+        file_paths = get_files(path)
+        for file_path in file_paths:
+            delete_path(add_paths(path, file_path))
+
+        dir_paths = get_dirs(path)
+        for dir_path in dir_paths:
+            delete_path(add_paths(path, dir_path))
+
+        os.rmdir(path)
+    else:
         os.remove(path)
 
 ## Return the path to the directory that 'file_path' lives in.

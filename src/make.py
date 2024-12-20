@@ -18,19 +18,30 @@ def make_assembly(assembly: Assembly) -> None:
         assembly.lib_names, assembly.lib_dir_paths, \
         assembly.build_dir_path, assembly.target_path)
 
+# TODO needs to consider situation where there isnt a main or isnt a test
+## Build src and main and test.
+def make_all(project: Project) -> None:
+    make_assembly(project.src)
+    make_assembly(project.main)
+    make_assembly(project.test)
+    print("Made all.")
+
 ## Build src.
 def make_src(project: Project) -> None:
     make_assembly(project.src)
+    print("Made src.")
 
 ## Build src and main.
 def make_main(project: Project) -> None:
-    make_src(project)
+    make_assembly(project.src)
     make_assembly(project.main)
+    print("Made main.")
 
 ## Build src and test.
 def make_test(project: Project) -> None:
-    make_src(project)
+    make_assembly(project.src)
     make_assembly(project.test)
+    print("Made test.")
 
 ## This is the behavior of wmake.
 if __name__ == "__main__":
@@ -38,7 +49,9 @@ if __name__ == "__main__":
 
     project = Project()
 
-    if target == "src":
+    if target == "all":
+        make_all(project)
+    elif target == "src":
         make_src(project)
     elif target == "main":
         make_main(project)

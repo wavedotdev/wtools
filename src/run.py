@@ -10,11 +10,13 @@ def run_assembly(assembly: Assembly, args = []) -> None:
 def run_main(project: Project, args = []) -> None:
     make_main(project)
     run_assembly(project.main, args)
+    print("Ran main.")
 
 ## Build src and test then run test with 'args'.
 def run_test(project: Project, args = []) -> None:
     make_test(project)
     run_assembly(project.test, args)
+    print("Ran test.")
 
 ## This is the behavior of wrun.
 if __name__ == "__main__":
